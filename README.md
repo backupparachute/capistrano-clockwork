@@ -7,7 +7,7 @@ TODO: Write a gem description
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-clockwork'
+gem 'capistrano-clockwork', :git => 'git://github.com/backupparachute/capistrano-clockwork.git'
 ```
 
 And then execute:
@@ -20,12 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+load it into your deployment script `config/deploy.rb`:
 
-## Contributing
+```ruby
+require 'capistrano/clockwork'
+```
 
-1. Fork it ( https://github.com/[my-github-username]/capistrano-clockwork/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Add clockwork task hooks:
+
+```ruby
+# Add clockwork hooks
+after  "deploy:stop",    "clockwork:stop"
+after  "deploy:start",   "clockwork:start"
+before "deploy:restart", "clockwork:restart"
+```
