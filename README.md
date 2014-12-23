@@ -1,26 +1,31 @@
-# Capistrano Clockwork
+# Capistrano::Clockwork
 
-Capistrano plugin that integrates clockwork tasks into capistrano deployment script.
+TODO: Write a gem description
 
-### Setup
+## Installation
 
-Add the library to your `Gemfile`:
-
-```ruby
-gem 'capistrano-clockwork', :require => false
-```
-
-And load it into your deployment script `config/deploy.rb`:
+Add this line to your application's Gemfile:
 
 ```ruby
-require 'capistrano-clockwork'
+gem 'capistrano-clockwork'
 ```
 
-Add unicorn restart task hook:
+And then execute:
 
-```ruby
-# Add clockwork hooks
-after  "deploy:stop",    "clockwork:stop"
-after  "deploy:start",   "clockwork:start"
-before "deploy:restart", "clockwork:restart"
-```
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install capistrano-clockwork
+
+## Usage
+
+TODO: Write usage instructions here
+
+## Contributing
+
+1. Fork it ( https://github.com/[my-github-username]/capistrano-clockwork/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
