@@ -34,3 +34,5 @@ after  "deploy:stop",    "clockwork:stop"
 after  "deploy:start",   "clockwork:start"
 before "deploy:restart", "clockwork:restart"
 ```
+
+only runs on `primary` server
