@@ -3,11 +3,11 @@ require "capistrano/clockwork/version"
 module Capistrano
   module Clockwork
     
-    config = Capistrano::Configuration.instance
-
-    if config
-
-      config.load do
+    # config = Capistrano::Configuration.instance
+    #
+    # if config
+    #
+    #   config.load do
         namespace :clockwork do
           desc "Start clockwork"
           task :start, :roles => [:app], :only => { :primary => true }, :except => { :no_release => true } do
@@ -23,8 +23,8 @@ module Capistrano
           end
         end
         
-      end
-    end
+      # end
+ #    end
     
   end
 end
