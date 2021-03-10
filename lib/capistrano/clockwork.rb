@@ -5,14 +5,14 @@ namespace :clockwork do
   task :start do
     on roles(:app) do
       on primary(:app) do
-        on release_roles(:all) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
-          execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir tmp/pids --log --log-dir logs start"
-        end
-      end
-        end
+        # on release_roles(:all) do
+          # within release_path do
+            with rails_env: fetch(:rails_env) do
+              run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
+              execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir tmp/pids --log --log-dir logs start"
+            end
+          # end
+        # end
       end
     end
   end
