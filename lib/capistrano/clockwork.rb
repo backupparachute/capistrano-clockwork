@@ -1,38 +1,35 @@
 require "capistrano/clockwork/version"
 
-# module Capistrano
-#   module Clockwork
-    
-    # config = Capistrano::Configuration.instance
-    #
-    # if config
-    #
-    #   config.load do
-        namespace :clockwork do
-          desc "Start clockwork"
-          task :start do
-            on roles(:app) do
-              on primary(:app) do 
-                on release_roles(:all) do
-                  run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
-                end
-              end
-            end
-                 # :except => { :no_release => true } do
-            # run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
-          end
-
-          # task :stop, :roles => [:app], :only => { :primary => true }, :except => { :no_release => true } do
-#             run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
-#           end
-#
-#           task :restart, :roles => [:app], :only => { :primary => true }, :except => { :no_release => true } do
-#             run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log restart"
-#           end
+namespace :clockwork do
+  desc "Start clockwork"
+  task :start do
+    on roles(:app) do
+      on primary(:app) do 
+        on release_roles(:all) do
+          run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
         end
-        
-      # end
- #    end
-    
-#   end
-# end
+      end
+    end
+  end
+  
+  task :restart do
+    on roles(:app) do
+      on primary(:app) do 
+        on release_roles(:all) do
+          run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log restart"                  
+        end
+      end
+    end
+  end
+  
+  task :stop do
+    on roles(:app) do
+      on primary(:app) do 
+        on release_roles(:all) do
+          run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
+        end
+      end
+    end
+  end
+
+end
