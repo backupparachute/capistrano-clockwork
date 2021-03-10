@@ -7,7 +7,7 @@ namespace :clockwork do
       on primary(:app) do 
         on release_roles(:all) do
           with rails_env: fetch(:rails_env) do
-            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
+            run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
           end
         end
       end
@@ -19,7 +19,7 @@ namespace :clockwork do
       on primary(:app) do 
         on release_roles(:all) do
           with rails_env: fetch(:rails_env) do
-            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log restart"                  
+            run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log restart"                  
           end
         end
       end
@@ -31,7 +31,7 @@ namespace :clockwork do
       on primary(:app) do 
         on release_roles(:all) do
           with rails_env: fetch(:rails_env) do
-            run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
+            run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
           end
         end
       end
