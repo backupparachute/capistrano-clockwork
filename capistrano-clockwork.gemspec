@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'capistrano/clockwork/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-clockwork"
-  spec.version       = Capistrano::Clockwork::VERSION
+  spec.version       = "0.3.20"
   spec.authors       = ["Kyle Miller"]
   spec.email         = ["github@backupparachute.com"]
   spec.summary       = %q{Capistrano clockwork plugin.}

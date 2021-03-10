@@ -48,4 +48,5 @@ namespace :clockwork do
 #     end
 #   end
 #
-end
+
+end # namespace end
