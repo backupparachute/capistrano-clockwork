@@ -1,7 +1,7 @@
 require "capistrano/clockwork/version"
 
-# module Capistrano
-#   module DelayedJob
+module Capistrano
+  module Clockwork
     
 namespace :clockwork do
   desc "Start clockwork"
@@ -52,6 +52,6 @@ namespace :clockwork do
 #     end
 #   end
 #
-# end
-# end
+end
+end
 end
