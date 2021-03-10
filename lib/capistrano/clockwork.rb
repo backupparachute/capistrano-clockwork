@@ -1,10 +1,10 @@
 require "capistrano/clockwork/version"
 
-module Capistrano
-  module Clockwork
+# module Capistrano
+#   module Clockwork
     
 namespace :clockwork do
-  desc "Start clockwork"
+
   task :start do
     on roles(:app) do
       # on primary(:app) do
@@ -53,5 +53,5 @@ namespace :clockwork do
 #   end
 #
 end
-end
-end
+# end
+# end
