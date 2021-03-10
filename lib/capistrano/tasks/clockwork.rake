@@ -5,7 +5,7 @@
 # end
 
 namespace :deploy do
-  before :starting do
+  before :starting, :deploy do
     invoke 'clockwork:add_default_hooks'
   end
 end
