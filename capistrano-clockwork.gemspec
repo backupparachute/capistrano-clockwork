@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-clockwork"
-  spec.version       = "0.3.22"
+  spec.version       = "0.3.23"
   spec.authors       = ["Kyle Miller"]
   spec.email         = ["github@backupparachute.com"]
   spec.summary       = %q{Capistrano clockwork plugin.}

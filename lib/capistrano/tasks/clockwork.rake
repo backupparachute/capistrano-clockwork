@@ -19,7 +19,7 @@ namespace :clockwork do
           within release_path do
             with rails_env: fetch(:rails_env) do
               # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
-              execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir tmp/pids --log --log-dir logs start"
+              execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir #{cw_pid_dir} --log --log-dir #{cw_log_dir} start"
             end
           end
          end
@@ -35,7 +35,7 @@ namespace :clockwork do
 
           with rails_env: fetch(:rails_env) do
             # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log restart"
-              execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir tmp/pids --log --log-dir logs restart"
+              execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir #{cw_pid_dir} --log --log-dir #{cw_log_dir} restart"
           end
         end
         end
@@ -51,7 +51,7 @@ namespace :clockwork do
           within release_path do
 
           with rails_env: fetch(:rails_env) do
-            execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir tmp/pids --log --log-dir logs stop"
+            execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir #{cw_pid_dir} --log --log-dir #{cw_log_dir} stop"
             # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
           end
         end
@@ -60,6 +60,14 @@ namespace :clockwork do
     end
   end
 #
+
+def cw_log_dir
+  "#{shared_path}/log"
+end
+
+def cw_pid_dir
+  "#{shared_path}/tmp/pids"
+end
 
 task :add_default_hooks do
    after 'deploy:publishing', 'clockwork:restart'
