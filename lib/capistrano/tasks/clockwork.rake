@@ -1,8 +1,4 @@
-require "capistrano/clockwork/version"
 
-# module Capistrano
-#   module Clockwork
-    
 namespace :clockwork do
 
   task :start do
@@ -53,5 +49,3 @@ namespace :clockwork do
 #   end
 #
 end
-# end
-# end
