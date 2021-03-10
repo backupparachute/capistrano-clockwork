@@ -1,7 +1,7 @@
 require "capistrano/clockwork/version"
 
-module Capistrano
-  module Clockwork
+# module Capistrano
+#   module Clockwork
     
     # config = Capistrano::Configuration.instance
     #
@@ -34,5 +34,5 @@ module Capistrano
       # end
  #    end
     
-  end
-end
+#   end
+# end
