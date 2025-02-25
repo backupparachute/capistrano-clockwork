@@ -13,24 +13,24 @@ end
 namespace :clockwork do
 
   task :start do
-    on roles(fetch(:clockwork_role)) do
+#    on roles(fetch(:clockwork_role)) do
        on primary(fetch(:clockwork_role)) do
-         on release_roles(:all) do
+#         on release_roles(:all) do#
           within release_path do
             with rails_env: fetch(:rails_env) do
               # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log start"
               execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir #{cw_pid_dir} --log --log-dir #{cw_log_dir} start"
             end
           end
-         end
+#         end
        end
-    end
+#    end
   end
   
   task :restart do
-    on roles(fetch(:clockwork_role)) do
+#    on roles(fetch(:clockwork_role)) do
       on primary(fetch(:clockwork_role)) do
-        on release_roles(:all) do
+ #       on release_roles(:all) do
           within release_path do
 
           with rails_env: fetch(:rails_env) do
@@ -38,16 +38,16 @@ namespace :clockwork do
               execute :bundle, :exec, :clockworkd, "-c lib/clock.rb --pid-dir #{cw_pid_dir} --log --log-dir #{cw_log_dir} restart"
           end
         end
-        end
+#       end
       end
-    end
+ #   end
   end
 #
 
   task :stop do
-    on roles(fetch(:clockwork_role)) do
+#    on roles(fetch(:clockwork_role)) do
       on primary(fetch(:clockwork_role)) do
-        on release_roles(:all) do
+ #       on release_roles(:all) do
           within release_path do
 
           with rails_env: fetch(:rails_env) do
@@ -55,9 +55,9 @@ namespace :clockwork do
             # run "cd #{current_path} && RAILS_ENV=#{fetch(:rails_env)} bundle exec clockworkd -c #{current_path}/lib/clock.rb --pid-dir #{shared_path}/pids --log --log-dir #{shared_path}/log stop"
           end
         end
-        end
+  #      end
       end
-    end
+  #  end
   end
 #
 
