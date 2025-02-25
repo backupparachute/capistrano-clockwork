@@ -13,8 +13,8 @@ end
 namespace :clockwork do
 
   task :start do
-    on roles(:app) do
-       on primary(:app) do
+    on roles(fetch(:clockwork_role)) do
+       on primary(fetch(:clockwork_role)) do
          on release_roles(:all) do
           within release_path do
             with rails_env: fetch(:rails_env) do
@@ -28,8 +28,8 @@ namespace :clockwork do
   end
   
   task :restart do
-    on roles(:app) do
-      on primary(:app) do
+    on roles(fetch(:clockwork_role)) do
+      on primary(fetch(:clockwork_role)) do
         on release_roles(:all) do
           within release_path do
 
@@ -45,8 +45,8 @@ namespace :clockwork do
 #
 
   task :stop do
-    on roles(:app) do
-      on primary(:app) do
+    on roles(fetch(:clockwork_role)) do
+      on primary(fetch(:clockwork_role)) do
         on release_roles(:all) do
           within release_path do
 
